@@ -7,6 +7,7 @@ class main{
 		int a = 2;
 		u.print();
 		v.print();
+		w.print();
 		WriteLine($"a*u= {a*u}");
 		WriteLine($"u*a= {u*a}");
 		WriteLine($"u+v= {u+v}");
@@ -17,7 +18,10 @@ class main{
 		WriteLine($"cross(u,v)= {vec.cross(u,v)}");
 		WriteLine($"u.cross(v)= {u.cross(v)}");
 		WriteLine($"u.norm= {u.norm()}");
+		WriteLine($"vec.norm(u)= {vec.norm(u)}");
 		WriteLine($"u.approx(v)= {u.approx(v)}");
+		WriteLine($"u.approx(w)= {u.approx(w)}");
+		WriteLine($"vec.approx(u,v)= {vec.approx(u,v)}");
 		WriteLine($"vec.approx(u,w)= {vec.approx(u,w)}");
 	}//Main
 }//main

@@ -26,7 +26,7 @@ public class vec{
 		return new vec(this.y*other.z-this.z*other.y, this.z*other.x-this.x*other.z, this.x*other.y-this.y*other.x);
 		}//u.cross(v)
 	public static vec cross(vec v, vec w){
-		return new vec(v.y*w.z-v.z*w.y, v.z*w.x-v.x*w.z, v.x*w.z-v.z*w.x);
+		return new vec(v.y*w.z-v.z*w.y, v.z*w.x-v.x*w.z, v.x*w.y-v.y*w.x);
 		}//vec.cross(u,v)
 	//norm
 	public double norm(){return Sqrt(this.x*this.x+this.y*this.y+this.z*this.z);}//v.norm()
