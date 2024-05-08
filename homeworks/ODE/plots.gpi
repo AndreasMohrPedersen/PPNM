@@ -1,0 +1,50 @@
+system "mkdir -p Plots" #-p make if Plots dont exist
+
+	### Part A ###
+
+# test of differential equations
+set terminal svg background "white"
+
+set key autotitle columnheader font ",18" outside center bottom
+
+set output "Plots/harmonicOscillator.svg"
+plot "data/harmonicOscillator.txt" index 1 with lines lw 7 lc rgb "black"\
+	,"data/harmonicOscillator.txt" index 0 with lines lw 2 lc rgb "green"
+
+# pendulum
+set title ""
+set output "Plots/pendulum.svg" 
+plot "data/pendulum.txt" using 1:2 with lines linewidth 4\
+	,"data/pendulum.txt" using 1:3 with lines linewidth 4\
+	,"data/harmonicOscillator.txt" index 0 with lines linewidth 2 linecolor rgb "red"
+
+	### Part B ###
+
+# relativistic planetary motion
+set terminal svg background "white" size 1050,400
+set size ratio -1
+#set key outside right
+set output "Plots/EquatorialMotion.svg"
+
+set multiplot layout 1,3
+
+unset xrange
+unset yrange
+set title "u(0) = 1, u'(0) = 0, {/symbol e} = 0, 5 revolutions"
+plot "data/circularMotion.txt" using (1/$2)*cos($1):(1/$2)*sin($1) with lines
+
+set title "u(0) = 1, u'(0) = -0.5, {/symbol e} = 0, 5 revolutions"
+plot "data/ellipticalMotion.txt" using (1/$2)*cos($1):(1/$2)*sin($1) with lines
+
+set title "u(0) = 1, u'(0) = -0.5, {/symbol e} = 0.01, 5 revolutions"
+plot "data/relativisticMotion.txt" using (1/$2)*cos($1):(1/$2)*sin($1) with lines
+
+	### Part C ###
+
+# Newtonian gravitational three body problem
+unset multiplot #cannot change output in multiplotmode
+set output "Plots/threeBodyProblem.svg"
+set title "3-body problem - m_1=m_2=m_3=1" font ",18"
+plot "data/threeBodyProblem.txt" using 2:3 with lines lt 2 lw 11 lc rgb "black"\
+	,"data/threeBodyProblem.txt" using 6:7 with lines lt 1 lw 6 lc rgb "green"\
+	,"data/threeBodyProblem.txt" using 10:11 with lines lt 3 lw 3 lc rgb "red"

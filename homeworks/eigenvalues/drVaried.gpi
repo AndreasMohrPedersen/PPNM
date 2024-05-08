@@ -1,0 +1,9 @@
+ \
+	set term svg;\
+	set out "dr.svg";\
+	set title "E_0 convergence with dr";\
+	set key bottom right;\
+	set xlabel "dr";\
+	set ylabel "E_{0}";\
+	plot "drVaried.txt" with points pt 7 title "fixed r_{max} = 25 ";\
+

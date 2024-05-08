@@ -5,9 +5,9 @@ class main{
 		vec v = new vec(4,5,6);
 		vec w = u;
 		int a = 2;
-		u.print();
-		v.print();
-		w.print();
+		u.print("u:");
+		v.print("v:");
+		w.print("w:");
 		WriteLine($"a*u= {a*u}");
 		WriteLine($"u*a= {u*a}");
 		WriteLine($"u+v= {u+v}");

@@ -1,0 +1,75 @@
+system "mkdir -p Plots"
+
+###partAB###
+set terminal svg background "white" size 1050,800
+
+set output "Plots/unitcircle.svg"
+set multiplot layout 2,2
+
+set title "Integral of unitcircle using plainMC" font ",18"
+set xlabel "N" font ",17"
+set ylabel "Integral value" font ",17"
+set xrange [0: 1000] 
+
+plot "data/unitcircle.txt" using 1:2 with lines lc rgb "purple" title "plainMC integral"\
+	,"data/unitcircle.txt" using 1:2 with points pt 7 ps 0.5 lc rgb "purple" title ""\
+	,pi with lines title "PI"
+
+
+set title "plainMC - Error estimate" font ",18"
+set xlabel "Log_{10}(N)" font ",17"
+set ylabel "Error" font ",17"
+set xrange [1: 1e4]
+set logscale x 10
+
+plot "data/unitcircle.txt" using 1:3 with lines title "plainMC err"\
+	,"data/unitcircle.txt" using 1:4 with points pointtype 6 title "actual err"\
+	,"data/fit.txt" using 1:2 with lines title "fit c/sqrt(N)"
+
+#	,"data/unitcircle.txt" using 1:5 with lines title "1/sqrt(N)"\
+
+unset logscale
+
+set title "Integral of unit circle using quasiMC" font ",18"
+set xlabel "N" font ",17"
+set ylabel "Integral value" font ",17"
+set xrange [0: 1000] 
+
+plot "data/unitcircle.txt" using 1:6 with lines lw 1 lc rgb "purple" title "quasiMC integral"\
+	,"data/unitcircle.txt" using 1:6 with points pt 7 ps 0.5 lc rgb "purple" title ""\
+	,pi with lines title "PI"
+
+set title "quasiMC - Errorestimate" font ",18" 
+set xlabel "log_{10}(N)" font ",17" 
+set ylabel "log_{10}(Error)" font ",17" 
+set xrange [10: 1e4] 
+set yrange [1e-4: 10]
+set logscale x 10
+set logscale y 10
+
+plot "data/unitcircle.txt" using 1:3 with lines title "plainMC err"\
+	,"data/unitcircle.txt" using 1:7 with lines title "quasiMC err"\
+#	,"data/unitcircle.txt" using 1:4 with points pointtype 6 title "actual err"\
+
+
+unset yrange
+unset xrange
+unset xlabel
+unset ylabel
+unset logscale
+unset title
+unset multiplot
+#### part C ####
+
+set terminal svg background "white" size 1050,400
+set output "Plots/stratified_sampling.svg"
+set multiplot layout 1,3 title "Pseudo-, Quasi- and Stratified samples (N≈10000)" font ",20"
+set key autotitle columnheader center top outside font ",16"
+set xrange [-1.2: 1.2]
+set yrange [-1.2: 1.2]
+
+plot "data/pseudoSampling.txt" using 1:2 with points ps 0.2
+
+plot "data/quasiSampling.txt" using 1:2 with points ps 0.2
+
+plot "data/stratifiedSampling.txt" using 1:2 with points ps 0.2

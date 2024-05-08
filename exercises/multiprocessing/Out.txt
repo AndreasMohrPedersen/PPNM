@@ -1,0 +1,24 @@
+Harmonic sum with 1 threads: 21.9936286826628
+real 4.47
+user 4.42
+sys 0.00
+Harmonic sum with 2 threads: 21.9936286826585
+real 2.31
+user 4.52
+sys 0.00
+Harmonic sum with 3 threads: 21.9936286826588
+real 4.19
+user 9.70
+sys 0.00
+Harmonic sum with 4 threads: 21.9936286826587
+real 3.62
+user 9.92
+sys 0.02
+result with Parallel.For: 14.4144889863002
+real 1.54
+user 11.68
+sys 0.01
+Using 18.997896413854
+real 0.41
+user 2.87
+sys 0.01

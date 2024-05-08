@@ -1,0 +1,15 @@
+----------------------
+Covariance matrix:
+   0.00125   0.000197 
+  0.000197   5.12e-05 
+----------------------
+Fit parameters:
+	Activity: 4.9587+-0.0354
+	lambda: 0.1706+-0.0072 days^-1
+
+Comparison with modern value for half-life:
+	Half-life: 4.0624+-0.1704 days
+	Modern value for half-life: 3.6319 days(Wikipedia)
+
+	Modern half-life is found to be lower than 
+even the lower limit of out calculated value

@@ -5,7 +5,7 @@ public class vec{
 
 	//constructors
 	public vec(){ x=0; y=0; z=0; }
-	public vec(double a,double b,double c){x=a; y=b; z=c; }
+	public vec(double a,double b,double c){x=a; y=b; z=c;}
 
 	//operators
 	public static vec operator*(vec v, double c){return new vec(c*v.x,c*v.y,c*v.z);}

@@ -1,0 +1,31 @@
+system "mkdir -p Plots"
+
+#### solution tothe swave radial schrodinger eq for the hydrogenatom ####
+set terminal svg background "white" size 600,400
+set output "Plots/partB1-swave.svg"
+set xrange[0:4]
+
+#set title "lowest root E_0=-0.500211244268825 with r_{max}=8, r_{min}=0.05\n	exact value E_0=-1/2" font ",16"
+set key autotitle columnheader font ",18"
+plot "data/numericalswave.txt" using 1:2 with points pt 7 title "numerical solution"\
+	,x*exp(-x) with lines dashtype 4 lw 2 title "exact solution: f_0(f) = re^{-r}"  
+
+unset xrange
+#### convergence investingation ####
+set terminal svg background "white" size 800,800
+set output "Plots/convergence.svg"
+set multiplot layout 2,2
+
+set xlabel "r_{min}"
+plot "data/convergenceData.txt" using 1:2 with lines dashtype 4 lw 2 lc rgb "black" title ""
+
+set xlabel "r_{max}"
+plot "data/convergenceData.txt" using 3:4 with lines dashtype 4 lw 2 lc rgb "black" title ""
+
+set xlabel "acc"
+#set xrange[0:1e-6]
+plot "data/convergenceData.txt" using 5:6 with lines dashtype 4 lw 2 lc rgb "black" title ""
+
+set xlabel "eps"
+plot "data/convergenceData.txt" using 7:8 with lines dashtype 4 lw 2 lc rgb "black" title ""
+

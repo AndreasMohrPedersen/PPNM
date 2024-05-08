@@ -1,0 +1,42 @@
+Part A: Test of integrator
+
+integral of sqrt(x) from 0 to 1:
+	Numerical: 0.666953909054655
+	Exact: 0.6666667
+	Numerical result within accuracy
+
+integral of 1/sqrt(x) from 0 to 1:
+	Numerical: 1.99996150007805
+	Exact: 2
+	Numerical result within accuracy
+
+integral of 4*sqrt(1-x^2) from 0 to 1:
+	Numerical: 3.14183457802727
+	Exact: 3.14159265358979
+	Numerical result within accuracy
+
+integral of ln(x)/sqrt(x) from 0 to 1:
+	Numerical: -3.99991705899915
+	Exact: -4
+	Numerical result within accuracy
+
+Part B:
+
+Integral of 1/Sqrt(x):
+open quad:		Numerical: 1.99996150007805,	Evaluations: 8572
+Clenshaw-Curtis:	Numerical: 1.9999998903107,	Evaluations: 52
+scipy.quad:		Numerical: 1.9999999999999984,	Evaluations; 231
+
+Integral of Log(x)/Sqrt(x):
+open quad:		Numerical: -3.99991705899915,	Evaluations: 8604
+Clenshaw-Curtis:	Numerical: -3.99999813339603,	Evaluations: 272
+scipy.quad:		Numerical: -4.000000000000085,	Evaluations: 315
+
+Part C:
+Integral of Exp(-x^2) from -inf to inf:
+open quad:		Numerical: 1.77269051667853+-5.87639958161902E-05,	Evaluations: 168
+scipy.quad:		Numerical: 1.7724538509067376+-4.316364671314715e-06,	Evaluations: 150
+
+Integral of 1/X^2 from 1 to inf:
+open quad:		Numerical: 1+-1.11022302462516E-16, Evaluations: 4
+scipy.quad:		Numerical: 1.0+-1.1102230246251565e-14,	Evaluations: 15

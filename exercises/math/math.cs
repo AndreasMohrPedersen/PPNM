@@ -7,19 +7,21 @@ static class main{
 	static double piExp = System.Math.Pow(pi, System.Math.E);
 	static void Main(){
 		System.Console.WriteLine($"Square root of 2: {sqrt2}");
-		System.Console.WriteLine($"Test of sqrt2: {sqrt2*sqrt2}");
+		System.Console.WriteLine($"Test: sqrt2*sqrt2 = {sqrt2*sqrt2}\n");
 		System.Console.WriteLine($"2^(1/5): {pow215}");
-		System.Console.WriteLine($"Test of 2^(1/5): {pow215*pow215*pow215*pow215*pow215}");
+		System.Console.WriteLine($"Test: (2^(1/5))^5 = {pow215*pow215*pow215*pow215*pow215}\n");
 		System.Console.WriteLine($"e^pi: {expPi}");
-		System.Console.WriteLine($"Test of e^pi: {System.Math.Pow(System.Math.E, pi)}");
+		System.Console.WriteLine($"Test of e^pi: {System.Math.Pow(System.Math.E, pi)}\n");
 		System.Console.WriteLine($"pi^e: {piExp}");
-		System.Console.WriteLine($"Test of e^pi: {System.Math.Pow(pi, System.Math.E)}");
+		System.Console.WriteLine($"Test of e^pi: {System.Math.Pow(pi, System.Math.E)}\n");
 
 		int[] exactGammas = {1, 1, 2, 6, 4, 120, 720, 5040, 40320, 362880};
-		for(int i=0;i<10;++i){
-			System.Console.WriteLine($"Γ({i+1}): {sfuns.fgamma(i+1)}");
-			System.Console.WriteLine($"ln(Γ({i+1})): {sfuns.lngamma(i+1)}");
-			System.Console.WriteLine($"Exact value of Γ({i+1}): {exactGammas[i]}");
+		System.Console.WriteLine("Gamma function:");
+		for(int i=0;i<10;++i)
+		{
+			System.Console.WriteLine($"	Exact value of Γ({i+1}): {exactGammas[i]}\n");
+			System.Console.WriteLine($"	Γ({i+1}): {sfuns.fgamma(i+1)}");
+			System.Console.WriteLine($"	ln(Γ({i+1})): {sfuns.lngamma(i+1)}");
 		}
 	}
 }

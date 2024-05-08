@@ -1,0 +1,53 @@
+newton: x=         2          2 
+newton: x=         2       3.99 
+newton: x=      1.79       3.16 
+newton: x=      1.71       2.91 
+newton: x=      1.56       2.42 
+newton: x=      1.47       2.15 
+newton: x=       1.3       1.67 
+newton: x=      1.26       1.58 
+newton: x=      1.17       1.36 
+newton: x=      1.11       1.23 
+newton: x=      1.05        1.1 
+newton: x=      1.02       1.04 
+newton: x=         1       1.01 
+newton: x=         1          1 
+newton: x=         1          1 
+newton: x=         2          2 
+newton: x=         2       3.99 
+newton: x=      1.75          3 
+newton: x=      1.69       2.86 
+newton: x=      1.48       2.14 
+newton: x=      1.43       2.05 
+newton: x=      1.28       1.62 
+newton: x=      1.23       1.52 
+newton: x=      1.15       1.32 
+newton: x=      1.09       1.19 
+newton: x=      1.04       1.08 
+newton: x=      1.01       1.03 
+newton: x=         1          1 
+newton: x=         1          1 
+newton: x=         1          1 
+Rosenbrock's valley function:
+	Initial guess: (2, 2)
+Forward method:
+	Minima:	(1.00001429877741,1.00002843451748),	steps: 14
+Central method:
+	Minima:	(1.0000000239192,1.00000004550681),	steps: 14
+newton: x=        -3         -3 
+newton: x=     -4.28      -3.47 
+newton: x=     -3.86      -3.31 
+newton: x=     -3.78      -3.28 
+newton: x=     -3.78      -3.28 
+newton: x=        -3         -3 
+newton: x=     -4.28      -3.47 
+newton: x=     -3.86      -3.31 
+newton: x=     -3.78      -3.28 
+newton: x=     -3.78      -3.28 
+
+Himmelblau's function:
+	Initial guess: (-3, -3)
+Forward method:
+	Minima:	(-3.77931221895615,-3.28318663888512),	steps: 4 
+Central method:
+	Minima:	(-3.77931271183683,-3.2831869143681),	steps: 4

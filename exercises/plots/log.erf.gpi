@@ -1,0 +1,14 @@
+\
+	set terminal svg background "white" ;\
+	set out "Erf.svg" ;\
+	set key left ;\
+	set xlabel "x" ;\
+	set ylabel "erf(x)" ;\
+	set tics out ;\
+	set grid ;\
+	set title "Error function" ;\
+	plot [-3:3]\
+		 "erf.txt" with lines title "Err func plot"\
+		,"data/erf.data.txt" using 1:2 with points pointtype 6 title "Tabulated values"\
+		,"data/erf.data.txt" using (-($1)):(-($2)) with points pointtype 6 notitle ;\
+

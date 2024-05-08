@@ -8,4 +8,4 @@ sfuns.dll : sfuns.cs
 	mcs -target:library -out:sfuns.dll sfuns.cs
 
 clean:
-	rm --force Out.txt math.exe
+	rm --force Out.txt math.exe sfuns.dll

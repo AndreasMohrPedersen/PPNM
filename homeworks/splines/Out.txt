@@ -1,0 +1,23 @@
+{xi=i, yi=1} , i=1…5
+b coefficients:
+	qspline:	0, 0, 0, 0
+	Manually:	0, 0, 0, 0
+c coefficients:
+	qspline:	0, 0, 0, 0
+	Manually:	0, 0, 0, 0
+
+{xi=i, yi=xi} , i=1…5
+b coefficients:
+	qspline:	1, 1, 1, 1
+	Manually:	1, 1, 1, 1
+c coefficients:
+	qspline:	0, 0, 0, 0
+	Manually:	0, 0, 0, 0
+
+{xi=i, yi=xi^2} , i=1…5
+b coefficients:
+	qspline:	2, 4, 6, 8
+	Manually:	2, 4, 6, 8
+c coefficients:
+	qspline:	1, 1, 1, 1
+	Manually:	1, 1, 1, 1

@@ -1,0 +1,15 @@
+system "mkdir -p Plots"
+### part B ###
+set terminal svg background "white"
+
+set out "Plots/higgs.svg"
+
+set title "Mass of Higgs boson" font ",18"
+set xlabel "E [GeV]"
+set ylabel "signal [certain units]"
+set key autotitle columnheader
+
+plot "higgs.data.txt" with yerrorbars pt 7 lc rgb "black" title "data"\
+	,"data/fitting.txt" using 1:2 with lines dashtype 4 lw 2 lc rgb "#3f3f3f" title "fit"
+	
+	

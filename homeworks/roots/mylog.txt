@@ -1,0 +1,23 @@
+rootfinder starting
+    ODEsolver starting with value -0.7
+    ODEsolver done: returning 82.3068480750219
+    ODEsolver starting with value -0.699999989569187
+    ODEsolver done: returning 82.3068384988877
+    ODEsolver starting with value -0.610347191085575
+    ODEsolver done: returning 25.6070979204824
+    ODEsolver starting with value -0.610347181990693
+    ODEsolver done: returning 25.6070942614381
+    ODEsolver starting with value -0.546698458608377
+    ODEsolver done: returning 6.99405912859332
+    ODEsolver starting with value -0.546698450461936
+    ODEsolver done: returning 6.99405750073713
+    ODEsolver starting with value -0.511697396343776
+    ODEsolver done: returning 1.34363021611468
+    ODEsolver starting with value -0.511697388718891
+    ODEsolver done: returning 1.34362924930524
+    ODEsolver starting with value -0.501100658268248
+    ODEsolver done: returning 0.096753319816499
+    ODEsolver starting with value -0.501100650801267
+    ODEsolver done: returning 0.0967525075341791
+    ODEsolver starting with value -0.500211244268825
+    ODEsolver done: returning 0.000640276131861616

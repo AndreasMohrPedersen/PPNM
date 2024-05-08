@@ -1,0 +1,8 @@
+ \
+	set term svg;\
+	set out "rMax.svg";\
+	set title "E_0 convergence with rmax";\
+	set xlabel "rmax";\
+	set ylabel "E_{0}";\
+	plot "rMaxVaried.txt" with points pt 7 title "fixed dr = 0.2 ";\
+

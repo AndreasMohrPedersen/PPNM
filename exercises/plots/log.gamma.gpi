@@ -1,0 +1,13 @@
+\
+	set terminal svg background "white" ;\
+	set out "Gamma.svg" ;\
+	set key left ;\
+	set xlabel "x" ;\
+	set ylabel "gamma(x)" ;\
+	set tics out ;\
+	set grid ;\
+	set title "Gamma function" ;\
+	plot [-6:6][-6:6]\
+		 "gamma.txt" with lines title "Gamma func plot"\
+		,"data/gamma.data.txt" using ($1+1):($2) with points pointtype 6 title "Tabulated values";\
+

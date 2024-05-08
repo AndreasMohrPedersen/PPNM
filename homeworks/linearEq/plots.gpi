@@ -1,0 +1,16 @@
+system "mkdir -p Plots"
+
+set terminal svg background "white" size 500,400
+set output "Plots/times.svg"
+
+set title "Optimal parameter c found via minimisation routine\n Factorisation time goes as: 5.33877966225493E-09 N^3" font ",17"
+set xlabel "N" font ",17"
+set ylabel "t [s]" font ",17"
+set key left
+set key font ",16"
+
+plot "data/times.txt" with points pt 7 title "measured times"\
+	,"data/fit.txt" with lines dashtype 4 lw 2 lc rgb "black" title "c*N^3 fit" 
+
+
+

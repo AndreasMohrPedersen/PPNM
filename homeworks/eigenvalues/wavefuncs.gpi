@@ -1,0 +1,14 @@
+ \
+	set term svg;\
+	set out "wavefuncs.svg";\
+	set title "";\
+	set xlabel "r";\
+	set ylabel "f(r)";\
+	plot [0:30][-1:1]\
+		 "wavefuncs.txt" using 1:5 with points pointtype 7 pointsize 0.5 title "Nummerical n = 1"\
+		,"wavefuncs.txt" using 1:6 with points pointtype 7 pointsize 0.5 title "Nummerical n = 2"\
+		,"wavefuncs.txt" using 1:7 with points pointtype 7 pointsize 0.5 title "Nummerical n = 3"\
+		,"wavefuncs.txt" using 1:2 with lines title "Analytical n = 1"\
+		,"wavefuncs.txt" using 1:3 with lines title "Analytical n = 2"\
+		,"wavefuncs.txt" using 1:4 with lines title "Analytical n = 3"\
+

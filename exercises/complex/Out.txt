@@ -1,0 +1,28 @@
+sqrt(-1) by program:	6.12e-17+-1i
+sqrt(-1) manual:	0+-1i
+comparison:		True
+
+sqrt(-i) by program:	0.707+-0.707i
+sqrt(-i) manual:	0.707+-0.707i
+comparison:		True
+
+exp(i) by program:	0.54+0.841i
+exp(i) manual:		0.54+0.841i
+comparison:		True
+
+exp(i*pi) by program:	-1+1.22e-16i
+exp(i*pi) manual:	-1+0i
+comparison:		True
+
+i^i by program:		0.208+0i
+i^i manual:		0.208+0i
+comparison:		True
+
+ln(i) by program:	0+1.57i
+ln(i) manual:		0+1.57i
+comparison:		True
+
+sqrt(i*pi) by program:	0+11.5i
+sqrt(i*pi) manual:	0+11.5i
+comparison:		True
+
