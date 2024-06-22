@@ -7,8 +7,8 @@ LIBS = $(addprefix -reference:,$(filter %.dll,$^)) # macros
 MKEXE = mcs -target:exe -out:$@ $(LIBS) $(CODE)
 MKLIB = mcs -target:library -out:$@ $(LIBS) $(CODE)
 
-#plots: plots.gpi out.txt main.cs 
-#	gnuplot $<
+plots: plots.gpi out.txt main.cs 
+	gnuplot $<
 
 out.txt: main.exe Makefile #to update makefile every time is edited
 	mono $< > $@
@@ -22,4 +22,4 @@ PPNM.dll: randmin.cs $(LINEQDIR)/QRGS.cs $(GENLIBDIR)/generic.cs $(MINLIBDIR)/mi
 
 clean:
 	$(RM) *.dll *.exe [Oo]ut* [Dd]ata* [Ll]og*
-	#rm -rfv data Plots # to delete directories
+	rm -rfv data Plots # to delete directories

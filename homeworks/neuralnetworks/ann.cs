@@ -23,6 +23,7 @@ public class ann{
 		this.n = n;	
 		p = new vector(3*n);
 	}
+
 	public ann(vector p)
 	{
 		this.n=p.size/3; 
@@ -32,27 +33,26 @@ public class ann{
 /*response function and derivatives*/
 	public double response(double x)
 	{  
-		p.print("response: p=");
 		double Fp=0; 
-		for(int i=0; i<n; i++) Fp+=f(x-a(i))/b(i)*w(i);
+		for(int i=0; i<n; i++) Fp += w(i)*f((x-a(i))/b(i));
 		return Fp;
 	}
 	public double derivative(double x)
 	{  
 		double Fp=0; 
-		for(int i=0; i<n; i++) Fp+=fPrime(x-a(i))/b(i)/b(i)*w(i);
+		for(int i=0; i<n; i++) Fp += w(i)*fPrime((x-a(i))/b(i))/b(i);
 		return Fp;
 	}
 	public double secondDerivative(double x)
 	{  
 		double Fp=0; 
-		for(int i=0; i<n; i++) Fp+=fDoublePrime(x-a(i))/b(i)/b(i)/b(i)*w(i);
+		for(int i=0; i<n; i++) Fp += w(i)*fDoublePrime((x-a(i))/b(i))/b(i)/b(i);
 		return Fp;
 	}
 	public double antiDerivative(double x)
 	{  
 		double Fp=0; 
-		for(int i=0; i<n; i++) Fp+=F(x-a(i))/b(i)*w(i)*b(i);
+		for(int i=0; i<n; i++) Fp += w(i)*F((x-a(i))/b(i))*b(i);
 		return Fp;
 	}
 	
@@ -64,26 +64,22 @@ public class ann{
 		for(int i=0; i<n; i++)
 		{
 			seta(i,x[i]+(x[x.size-1]-x[0])*i/(n-1));
-//			seta(i,(double)(i+1)/n);
+			seta(i,(double)(i+1)/n);
 			setb(i,1);
 			setw(i,1);	
+
 		}
-		
-		vector dp=new vector(p.size);
-		for(int i=0;i<n;i++)dp[i]=x[x.size-1]-x[0];
-		for(int i=0;i<n;i++)dp[n+i]=0.9;
-		for(int i=0;i<n;i++)dp[2*n+i]=2;
 
 		Func<vector,double> C = u =>
 		{
 			ann annu = new ann(u);//create object ann
 			double Cp=0;
-			for(int k=0; k<x.size;k++)Cp+=Pow(annu.response(x[k])-y[k],2);//calls Func Fp
+			for(int k=0; k<x.size;k++) Cp += Pow(annu.response(x[k])-y[k],2);//calls Func Fp
 			return Cp;
 		};
-		
 //		p = minimisation.Newton(C,p,acc: 1e-3,maxSteps: 1000, method: "forward").Item1;
 //		p = minimisation.Newton(C,p,acc:1e-3,maxSteps: 1000,method: "central").Item1;
-		p = randmin.go(C,p,dp,nsamples:10000);
+		p = minimisation.NelderMead(C, p, acc: 1e-4, simplexSize:0.5, maxIterations: 100000).Item1;
+		//p = minimisation.Newton(C,p,acc: 1e-3,maxSteps: 3000, method: "forward").Item1;
 	}//train
 }//ann

@@ -7,17 +7,20 @@ static class main
 {
 	static void Main()
 	{
-		partAB(n: 6, points: 10, interval: new double[] {-1,1}, name: "6neurons");
+		Func<double,double> g = x => Cos(5*x-1)*Exp(-x*x);
+		partAB( g, n: 5, points: 12, interval: new double[] {-1,1}, resolution: 50, name: "6nn12p");
+		partAB( g, n: 6, points: 7, interval: new double[] {-1,1}, resolution: 50, name: "6nn8p");
+		partAB( g, n: 3, points: 12, interval: new double[] {-1,1}, resolution: 50, name: "3nn12p");
 	}
 	
-	static void partAB(int n, int points, double[] interval, string name)
+	static void partAB(Func<double,double> g, int n, int points, double[] interval, int resolution, string name)
 	{
-		Func<double,double> g = x => Cos(5*x-1)*Exp(-x*x);
-		g = x=>1;
-		vector xs = new vector(points); vector ys = new vector(xs.size);
+		vector xs = new vector(points); 
+		vector ys = new vector(xs.size);
 
+	/*training data*/
 		Directory.CreateDirectory("data");
-		using(var output = new StreamWriter($"data/{name}.xyData.txt"))
+		using(var output = new StreamWriter($"data/{name}.trainingData.txt"))
 		{
 			for(int i=0; i<xs.size; i++)
 			{
@@ -26,14 +29,19 @@ static class main
 				output.WriteLine($"{xs[i]} {ys[i]}");
 			}
 		}
-
 		ann nn = new ann(n);//calls constructor
 		nn.train(xs,ys);
+		
+		vector interpolationxs = new vector(resolution);
 
 		WriteLine($"{nn.response(xs[0])}");
 		using(var output = new StreamWriter($"data/{name}.interpolation.txt"))
 		{
-			for(int i=0; i<xs.size; i++) output.WriteLine($"{xs[i]} {nn.response(xs[i])} {nn.derivative(xs[i])} {nn.secondDerivative(xs[i])} {nn.antiDerivative(xs[i])}");
+			for(int i=0; i<resolution; i++)
+			{
+				interpolationxs[i]= interval[0]+(interval[1]-interval[0])/(interpolationxs.size-1)*i;
+				output.WriteLine($"{interpolationxs[i]} {nn.response(interpolationxs[i])} {nn.derivative(interpolationxs[i])} {nn.secondDerivative(interpolationxs[i])} {nn.antiDerivative(interpolationxs[i])}");
+			}
 		}	
 	}
 }

@@ -1,0 +1,20 @@
+
+Beales's function, global minimum  at (3,0.5):
+
+Forward Newton method:
+	Best guess:	(3,0.444444444444445)
+	Minima:	(2.99999254473291,0.499998206041012)
+Central Newton method:
+	Minima:	(2.99999294404056,0.49999832708336)
+NelderMead method:
+	Minima:	(3.00002323512626,0.499968082924271)
+
+Ackley's function, global minimum  at (3,0.5):
+
+Forward Newton method:
+	Best guess:	(0.0125,0.08477366255144)
+	Minima:	(-1.05942008738149E-05,-1.06242993892356E-05)
+Central Newton method:
+	Minima:	(1.30624977117377E-07,-7.01186603951746E-07)
+NelderMead method:
+	Minima:	(-0.000558380223810618,0.000101235240635911)

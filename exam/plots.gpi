@@ -1,0 +1,79 @@
+system "mkdir -p Plots"
+
+set terminal svg background "white" size 1200,800
+set out "Plots/lowDiscrepencyData.svg"
+set multiplot layout 2,3
+set key below maxrows 2 width -8 font ",11"
+#set key at 4., -5.5 maxrows 2 width -8 font ",11"
+
+#specifications for contourplot
+set isosamples 500, 500
+set surface 
+set contour base
+#set cntrlabel  format '%8.3g' font ',7' start 2 interval 20
+set cntrlabel onecolor format '%8.3g' font ',7' start 2 interval 20
+set cntrparam order 8
+unset colorbox
+set view map
+#unset ztics
+set logscale z 10
+
+#testfunctions:
+Beale(x,y) = (1.5-x+x*y)**2+(2.25-x+x*y**2)**2+(2.625-x+x*y**3)**2
+Ackley(x,y)= -20*exp(-0.2*sqrt(0.5*(x**2+y**2)))-exp(0.5*(cos(2*pi*x)+cos(2*pi*y)))+exp(1)+20
+
+#Bealeplots
+set palette defined (0 "#440154", 0.01 "#46327e", 0.1 "#365c8d", 1 "#277f8e", 10 "#1fa187", 100 "#4ac16d", 1000 "#a0da39", 10000 "#fde725")
+
+
+set title "Minimum found by SGO using theforward Newton method\n The figure is plotted with  100 sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Beale(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Beale(x,y) with lines lc "black" nosurface title "Beale(x,y)"\
+	, 'data/quasiRandomDataBeale.txt' using 1:2:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataBeale.txt' using 1:2:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessBeale.txt" using 1:2:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found"\
+	, "data/min&guessBeale.txt" using 3:4:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
+set title "Minimum found by SGO\n The figure is plotted with 100 sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Beale(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Beale(x,y) with lines lc "black" nosurface title "Beale(x,y)"\
+	, 'data/quasiRandomDataBeale.txt' using 3:4:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataBeale.txt' using 3:4:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessBeale.txt" using 5:6:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found by SGO"\
+	, "data/min&guessBeale.txt" using 7:8:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
+set title "Minimum found by stochastic global optimizer\n The figure is plotted with 100 sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Beale(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Beale(x,y) with lines lc "black" nosurface title "Beale(x,y)"\
+	, 'data/quasiRandomDataBeale.txt' using 5:6:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataBeale.txt' using 5:6:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessBeale.txt" using 9:10:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found by SGO"\
+	, "data/min&guessBeale.txt" using 11:12:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
+#Ackley plots
+set palette defined (0 "#440154", 1 "#46327e", 3 "#365c8d", 5 "#277f8e", 8 "#1fa187", 10 "#4ac16d", 12 "#a0da39", 16 "#fde725")
+
+set title "Minimum found by stochastic global optimizer\n The figure is plotted with xxx sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with lines lc "black" nosurface title "Ackley(x,y)"\
+	, 'data/quasiRandomDataAckley.txt' using 1:2:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataAckley.txt' using 1:2:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessAckley.txt" using 1:2:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found by SGO"\
+	, "data/min&guessAckley.txt" using 3:4:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
+set title "Minimum found by stochastic global optimizer\n The figure is plotted with xxx sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with lines lc "black" nosurface title "Ackley(x,y)"\
+	, 'data/quasiRandomDataAckley.txt' using 3:4:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataAckley.txt' using 3:4:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessAckley.txt" using 5:6:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found by SGO"\
+	, "data/min&guessAckley.txt" using 7:8:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
+set title "Minimum found by stochastic global optimizer\n The figure is plotted with xxx sampling points for clarity" offset 0,1 font ",14"
+splot [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with pm3d notitle\
+	, [-4.5:4.5] [-4.5:4.5] Ackley(x,y) with lines lc "black" nosurface title "Ackley(x,y)"\
+	, 'data/quasiRandomDataAckley.txt' using 5:6:(1) with points nocontour pt 7 ps 0.6 lc rgb "black" notitle\
+	, 'data/quasiRandomDataAckley.txt' using 5:6:(1) with points nocontour pt 7 ps 0.4 lc rgb "#ffe6c9" title "Quasi-random data"\
+	, "data/min&guessAckley.txt" using 9:10:(1) with points nocontour pt 7 ps 0.7 lc rgb "green" title "Minimum found by SGO"\
+	, "data/min&guessAckley.txt" using 11:12:(1) with points nocontour pt 7 ps 0.7 lc rgb "red" title "Initial guess"
+
