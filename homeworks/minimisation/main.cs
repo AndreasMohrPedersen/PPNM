@@ -7,7 +7,7 @@ public static class main
 	public static void Main()
 	{
 		partAC();
-	//	partB();
+		partB();
 	}
 	public static void partAC()
 	{
@@ -33,7 +33,7 @@ public static class main
 		WriteLine("Forward method:");
 		WriteLine($"	Minima:	({forwardHimmelblau[0]},{forwardHimmelblau[1]}),	steps: {stepsForwardHimmelblau} ");
 		WriteLine("Central method:");
-		WriteLine($"	Minima:	({centralHimmelblau[0]},{centralHimmelblau[1]}),	steps: {stepsCentralHimmelblau}");
+		WriteLine($"	Minima:	({centralHimmelblau[0]},{centralHimmelblau[1]}),	steps: {stepsCentralHimmelblau}\n");
 
 
 	}//partA
@@ -73,7 +73,13 @@ public static class main
 
 		vector startguess = new vector(125, 5,30);//initial guess for minimisation func
 		vector fitParams = minimisation.Newton(deviation, startguess).Item1;//fitting parameters
+		vector fitParamsCN = minimisation.Newton(deviation, startguess).Item1;//fitting parameters central newton
 
+		WriteLine($"Estimated mass of the Higgs:");
+		WriteLine($"	From Wikipedia: 	125.25(17) 	 GeV/c^2");
+		WriteLine($"	Forward Newton method:	{fitParams[0]} GeV/c^2");
+		WriteLine($"	Central Newton method: 	{fitParams[0]} GeV/c^2");
+		
 		Directory.CreateDirectory("data");
 		using(var output = new StreamWriter("data/fitting.txt"))
 		{
@@ -83,7 +89,7 @@ public static class main
 			for(int i=0; i<iterations; i++)
 			{
 			
-				output.WriteLine($"{Es} {breitWigner(Es, fitParams)}");
+				output.WriteLine($"{Es} {breitWigner(Es, fitParams)} {breitWigner(Es, fitParamsCN)}");
 				Es += step;
 			}	
 		}

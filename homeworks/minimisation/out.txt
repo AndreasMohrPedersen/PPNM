@@ -11,3 +11,8 @@ Forward method:
 	Minima:	(-3.77931218555293,-3.28318660681074),	steps: 4 
 Central method:
 	Minima:	(-3.77931271185537,-3.28318691438661),	steps: 4
+
+Estimated mass of the Higgs:
+	From Wikipedia: 	125.25(17) 	 GeV/c^2
+	Forward Newton method:	125.972185204508 GeV/c^2
+	Central Newton method: 	125.972185204508 GeV/c^2

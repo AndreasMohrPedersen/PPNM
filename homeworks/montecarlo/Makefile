@@ -24,5 +24,5 @@ genlib.dll: $(GENLIBDIR)/generic.cs; $(MKLIB)
 min.dll: $(MINLIBDIR)/minimisation.cs linalg.dll; $(MKLIB)
 
 clean:
-	$(RM) *.dll main.exe [Oo]ut.txt
+	$(RM) *.dll main.exe [Oo]ut.txt\
 	rm -rfv data Plots # to delete directories

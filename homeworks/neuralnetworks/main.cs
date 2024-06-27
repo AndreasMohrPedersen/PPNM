@@ -8,9 +8,9 @@ static class main
 	static void Main()
 	{
 		Func<double,double> g = x => Cos(5*x-1)*Exp(-x*x);
-		partAB( g, n: 5, points: 12, interval: new double[] {-1,1}, resolution: 50, name: "6nn12p");
-		partAB( g, n: 6, points: 7, interval: new double[] {-1,1}, resolution: 50, name: "6nn8p");
-		partAB( g, n: 3, points: 12, interval: new double[] {-1,1}, resolution: 50, name: "3nn12p");
+		partAB( g, n: 6, points: 15, interval: new double[] {-1,1}, resolution: 50, name: "6nn15p");
+		partAB( g, n: 6, points: 7, interval: new double[] {-1,1}, resolution: 50, name: "6nn7p");
+		partAB( g, n: 3, points: 15, interval: new double[] {-1,1}, resolution: 50, name: "3nn15p");
 	}
 	
 	static void partAB(Func<double,double> g, int n, int points, double[] interval, int resolution, string name)
@@ -31,6 +31,7 @@ static class main
 		}
 		ann nn = new ann(n);//calls constructor
 		nn.train(xs,ys);
+		for(int i=0; i<n; i++)WriteLine($"{nn.b(i)}");
 		
 		vector interpolationxs = new vector(resolution);
 

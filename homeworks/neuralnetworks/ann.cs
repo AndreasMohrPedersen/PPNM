@@ -63,7 +63,7 @@ public class ann{
 /*set starting values for p-vector*/
 		for(int i=0; i<n; i++)
 		{
-			seta(i,x[i]+(x[x.size-1]-x[0])*i/(n-1));
+//			seta(i,x[i]+(x[x.size-1]-x[0])*i/(n-1));
 			seta(i,(double)(i+1)/n);
 			setb(i,1);
 			setw(i,1);	
@@ -79,7 +79,7 @@ public class ann{
 		};
 //		p = minimisation.Newton(C,p,acc: 1e-3,maxSteps: 1000, method: "forward").Item1;
 //		p = minimisation.Newton(C,p,acc:1e-3,maxSteps: 1000,method: "central").Item1;
-		p = minimisation.NelderMead(C, p, acc: 1e-4, simplexSize:0.5, maxIterations: 100000).Item1;
-		//p = minimisation.Newton(C,p,acc: 1e-3,maxSteps: 3000, method: "forward").Item1;
+		p = minimisation.NelderMead(C, p, acc: 1e-2, simplexSize:0.5, maxIterations: 100000).Item1;
+		p = minimisation.Newton(C, p, acc: 1e-4, maxSteps: 3000, method: "central").Item1;
 	}//train
 }//ann

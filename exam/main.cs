@@ -23,32 +23,48 @@ public static class main
 		genlist<vector> xsCentral = new genlist<vector>();
 		genlist<vector> xsNM = new genlist<vector>();
 		
-		(vector forward, vector forwardBestGuess) = globalOptimiser.SGO(beale, init: x0, boxDimensions: 8 , nsamples: 100, xs: xsForward);
-		(vector central, vector centralBestGuess) = globalOptimiser.SGO(beale, init: x0, boxDimensions: 8 , nsamples: 100, method: "central", xs: xsCentral);
-		(vector nelderMead, vector nmBestGuess) = globalOptimiser.SGO(beale, init: x0, boxDimensions: 8 , nsamples: 100, method: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
+		(vector forward, vector forwardBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", xs: xsForward);
+		(vector central, vector centralBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", minimiser: "central", xs: xsCentral);
+		(vector nelderMead, vector nmBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", minimiser: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
 
 	/*out.txt*/
 		WriteLine($"\nBeales's function, global minimum  at (3,0.5):\n");
-//		WriteLine($"	Initial guess: ({x0[0]}, {x0[1]})");
 		WriteLine("Forward Newton method:");
 		WriteLine($"	Best guess:	({forwardBestGuess[0]},{forwardBestGuess[1]})");//startguess given to local minimiser
 		WriteLine($"	Minima:	({forward[0]},{forward[1]})");
 		WriteLine("Central Newton method:");
-//		WriteLine($"	Best guess:	({centralBestGuess[0]},{centralBestGuess[1]})");
+		WriteLine($"	Best guess:	({centralBestGuess[0]},{centralBestGuess[1]})");
 		WriteLine($"	Minima:	({central[0]},{central[1]})");
 		WriteLine("NelderMead method:");
-//		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
+		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
 		WriteLine($"	Minima:	({nelderMead[0]},{nelderMead[1]})");
-		
+
 /*Data for plots*/		
 		Directory.CreateDirectory("data"); //create directory data if it does not exist
-		using (StreamWriter output = new StreamWriter($"data/quasiRandomDataBeale.txt"))
+		using (StreamWriter output = new StreamWriter($"data/QRDForwardBeale.txt"))//QRD = Quasi-Random Data
+		{
+			for(int i=0;i<xsForward.size;i++) 
+			{		
+			output.WriteLine($"{xsForward[i][0]} {xsForward[i][1]}");
+			}
+		}
+
+		using (StreamWriter output = new StreamWriter($"data/QRDCentralBeale.txt"))
+		{
+			for(int i=0;i<xsCentral.size;i++) 
+			{		
+			output.WriteLine($"{xsCentral[i][0]} {xsCentral[i][1]}");
+			}
+		}
+		using (StreamWriter output = new StreamWriter($"data/QRDNelderMeadBeale.txt"))
 		{
 			for(int i=0;i<xsNM.size;i++) 
 			{		
-				output.WriteLine($"{xsForward[i][0]} {xsForward[i][1]} {xsCentral[i][0]} {xsCentral[i][1]} {xsNM[i][0]} {xsNM[i][1]}");
+			//	output.WriteLine($"{xsForward[i][0]} {xsForward[i][1]} {xsCentral[i][0]} {xsCentral[i][1]} {xsNM[i][0]} {xsNM[i][1]}");
+			output.WriteLine($"{xsNM[i][0]} {xsNM[i][1]}");
 			}
 		} 
+
 		using(StreamWriter output = new StreamWriter($"data/min&guessBeale.txt"))
 		{
 			output.WriteLine($"{forward[0]} {forward[1]} {forwardBestGuess[0]} {forwardBestGuess[1]} {central[0]} {central[1]} {centralBestGuess[0]} {centralBestGuess[1]} {nelderMead[0]} {nelderMead[1]} {nmBestGuess[0]} {nmBestGuess[1]}");
@@ -63,29 +79,44 @@ public static class main
 		genlist<vector> xsCentral = new genlist<vector>();
 		genlist<vector> xsNM = new genlist<vector>();
 		
-		(vector forward, vector forwardBestGuess) = globalOptimiser.SGO(ackley, init: x0, boxDimensions: 8 , nsamples: 100, xs: xsForward);
-		(vector central, vector centralBestGuess) = globalOptimiser.SGO(ackley, init: x0, boxDimensions: 8 , nsamples: 100, method: "central", xs: xsCentral);
-		(vector nelderMead, vector nmBestGuess) = globalOptimiser.SGO(ackley, init: x0, boxDimensions: 8 , nsamples: 100, method: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
+		(vector forward, vector forwardBestGuess) = sgo.SGO(ackley, init: x0, boxDim: 8 , n: 100, xs: xsForward);
+		(vector central, vector centralBestGuess) = sgo.SGO(ackley, init: x0, boxDim: 8 , n: 100, minimiser: "central", xs: xsCentral);
+		(vector nelderMead, vector nmBestGuess) = sgo.SGO(ackley, init: x0, boxDim: 8 , n: 100, minimiser: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
 	/*out txt*/	
 		WriteLine($"\nAckley's function, global minimum  at (3,0.5):\n");
-//		WriteLine($"	Initial guess: ({x0[0]}, {x0[1]})");
 		WriteLine("Forward Newton method:");
 		WriteLine($"	Best guess:	({forwardBestGuess[0]},{forwardBestGuess[1]})");
 		WriteLine($"	Minima:	({forward[0]},{forward[1]})");
 		WriteLine("Central Newton method:");
-//		WriteLine($"	Best guess:	({centralBestGuess[0]},{centralBestGuess[1]})");
+		WriteLine($"	Best guess:	({centralBestGuess[0]},{centralBestGuess[1]})");
 		WriteLine($"	Minima:	({central[0]},{central[1]})");
 		WriteLine("NelderMead method:");
-//		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
+		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
 		WriteLine($"	Minima:	({nelderMead[0]},{nelderMead[1]})");
 		
 	/*Data for plots*/		
 		Directory.CreateDirectory("data");
-		using (StreamWriter output = new StreamWriter($"data/quasiRandomDataAckley.txt"))
+
+		using (StreamWriter output = new StreamWriter($"data/QRDForwardAckley.txt"))
+		{
+			for(int i=0;i<xsForward.size;i++) 
+			{		
+				output.WriteLine($"{xsForward[i][0]} {xsForward[i][1]}");
+			}
+		}
+		using (StreamWriter output = new StreamWriter($"data/QRDCentralAckley.txt"))
+		{
+			for(int i=0;i<xsCentral.size;i++) 
+			{		
+				output.WriteLine($"{xsCentral[i][0]} {xsCentral[i][1]}");
+			}
+		}
+		
+		using (StreamWriter output = new StreamWriter($"data/QRDNelderMeadAckley.txt"))
 		{
 			for(int i=0;i<xsNM.size;i++) 
 			{		
-				output.WriteLine($"{xsForward[i][0]} {xsForward[i][1]} {xsCentral[i][0]} {xsCentral[i][1]} {xsNM[i][0]} {xsNM[i][1]}");
+				output.WriteLine($"{xsNM[i][0]} {xsNM[i][1]}");
 			}
 		} 
 		using(StreamWriter output = new StreamWriter($"data/min&guessAckley.txt"))

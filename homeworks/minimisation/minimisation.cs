@@ -52,7 +52,7 @@ public static class minimisation
 		double phix = phi(x); /* no need to recalculate at each step */
 		for(int i=0;i<x.size;i++)
 		{
-			double dx=Abs(x[i])*Pow(2,-29);
+			double dx=Abs(x[i])*Pow(2,-29);//-29
 			x[i]+=dx;
 			DeltaPhi[i]=(phi(x)-phix)/dx;
 			x[i]-=dx;
@@ -81,7 +81,7 @@ public static class minimisation
 		vector DeltaPhi = new vector(x.size);
 		for(int i=0;i<x.size;i++)
 		{
-			double dx=Abs(x[i])*Pow(2,-30);
+			double dx=Abs(x[i])*Pow(2,-30);//-30
 			xp[i]+=dx;
 			xm[i]-=dx;
 

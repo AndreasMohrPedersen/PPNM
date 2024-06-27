@@ -14,7 +14,7 @@ out.txt: main.exe Makefile #to update makefile every time is edited
 	mono $< > $@
 main.exe: main.cs sgo.dll linalg.dll genlib.dll; $(MKEXE)
 
-sgo.dll: globalOptimiser.cs min.dll linalg.dll genlib.dll; $(MKLIB)
+sgo.dll: sgo.cs min.dll linalg.dll genlib.dll; $(MKLIB)
 
 linalg.dll: $(MATLIBDIR)/matrix.cs $(MATLIBDIR)/vector.cs; $(MKLIB)
 

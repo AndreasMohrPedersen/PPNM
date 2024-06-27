@@ -22,5 +22,5 @@ QRGS.dll: $(LINEQDIR)/QRGS.cs linalg.dll; $(MKLIB)
 min.dll: minimisation.cs linalg.dll QRGS.dll; $(MKLIB)
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* [Dd]ata* [Ll]og*
+	$(RM) *.dll *.exe [Oo]ut* [Dd]ata* [Ll]og*\
 	rm -rfv data Plots # to delete directories

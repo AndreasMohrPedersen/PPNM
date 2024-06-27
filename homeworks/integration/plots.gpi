@@ -15,7 +15,7 @@ plot "data/erf.txt" with lines title "erf(x)"\
 
 #comparison with plots exercise
 set title "intErf(x) vs erf(x)"
-set output "Plots/comparison.svg"
+set output "Plots/ErfComparison.svg"
 
 set xlabel "log_{10}(x)" font ",17"
 set ylabel "log_{10}(erf(x))" font ",17"

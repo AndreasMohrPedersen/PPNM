@@ -26,5 +26,5 @@ QRGS.dll: $(LINEQDIR)/QRGS.cs linalg.dll; $(MKLIB)
 ODE.dll: $(ODEDIR)/ode.cs $(ODEDIR)/butchertables.cs linalg.dll genlib.dll; $(MKLIB)
 
 clean:
-	$(RM) *.dll *.exe [Oo]ut* [Dd]ata* [Ll]og*
-	#rm -rfv data Plots # to delete directories
+	$(RM) *.dll *.exe [Oo]ut* [Dd]ata* [Ll]og*\
+	rm -rfv data Plots # to delete directories

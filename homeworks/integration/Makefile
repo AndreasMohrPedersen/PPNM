@@ -19,5 +19,5 @@ main.exe: main.cs integration.dll; $(MKEXE)
 integration.dll: integration.cs; $(MKLIB)
 
 clean:
-	$(RM) integration.dll main.exe [Oo]ut.txt python.txt pythonCounts.txt
+	$(RM) integration.dll main.exe [Oo]ut.txt python.txt pythonCounts.txt\
 	rm -rfv data Plots # to delete directories
