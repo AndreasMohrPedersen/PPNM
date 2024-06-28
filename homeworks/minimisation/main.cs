@@ -78,7 +78,7 @@ public static class main
 		WriteLine($"Estimated mass of the Higgs:");
 		WriteLine($"	From Wikipedia: 	125.25(17) 	 GeV/c^2");
 		WriteLine($"	Forward Newton method:	{fitParams[0]} GeV/c^2");
-		WriteLine($"	Central Newton method: 	{fitParams[0]} GeV/c^2");
+		WriteLine($"	Central Newton method: 	{fitParamsCN[0]} GeV/c^2");
 		
 		Directory.CreateDirectory("data");
 		using(var output = new StreamWriter("data/fitting.txt"))
