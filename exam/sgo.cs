@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Diagnostics;
 using System.Collections.Generic;
 using static System.Console; 
 
@@ -94,9 +95,11 @@ public class sgo
 		double bestFunctionValue=f(init);
 		vector bestGuess = init;
 		vector x = new vector(dimension);
-		var startTime = DateTime.Now;
+		Stopwatch timer = new Stopwatch();
+		 
 		int count = 0;
 
+		timer.Start();
 		do
 		{
 			count++;
@@ -113,7 +116,7 @@ public class sgo
 				bestFunctionValue = functionValue; 
 				bestGuess = x.copy();
 			}
-		}while((DateTime.Now-startTime).Milliseconds < sampletime);
+		}while(timer.Elapsed.Milliseconds < sampletime);
 		return bestGuess;
 	}//timeSampling 
 

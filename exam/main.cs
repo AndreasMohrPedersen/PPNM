@@ -23,9 +23,9 @@ public static class main
 		genlist<vector> xsCentral = new genlist<vector>();
 		genlist<vector> xsNM = new genlist<vector>();
 		
-		(vector forward, vector forwardBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", xs: xsForward);
-		(vector central, vector centralBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", minimiser: "central", xs: xsCentral);
-		(vector nelderMead, vector nmBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 5, samplingMethod: "timeSampling", minimiser: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
+		(vector forward, vector forwardBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 1, samplingMethod: "timeSampling", xs: xsForward);
+		(vector central, vector centralBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 1, samplingMethod: "timeSampling", minimiser: "central", xs: xsCentral);
+		(vector nelderMead, vector nmBestGuess) = sgo.SGO(beale, init: x0, boxDim: 8 , n: 1, samplingMethod: "timeSampling", minimiser: "NelderMead", options: new Dictionary<string, double>(){{"simplexSize", 0.5}}, xs: xsNM);
 
 	/*out.txt*/
 		WriteLine($"\nBeales's function, global minimum  at (3,0.5):\n");
@@ -39,7 +39,7 @@ public static class main
 		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
 		WriteLine($"	Minima:	({nelderMead[0]},{nelderMead[1]})");
 
-/*Data for plots*/		
+/*Data for Beale plots*/		
 		Directory.CreateDirectory("data"); //create directory data if it does not exist
 		using (StreamWriter output = new StreamWriter($"data/QRDForwardBeale.txt"))//QRD = Quasi-Random Data
 		{
@@ -94,7 +94,7 @@ public static class main
 		WriteLine($"	Best guess:	({nmBestGuess[0]},{nmBestGuess[1]})");
 		WriteLine($"	Minima:	({nelderMead[0]},{nelderMead[1]})");
 		
-	/*Data for plots*/		
+	/*Data for Ackley plots*/		
 		Directory.CreateDirectory("data");
 
 		using (StreamWriter output = new StreamWriter($"data/QRDForwardAckley.txt"))

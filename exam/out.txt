@@ -2,8 +2,8 @@
 Beales's function, global minimum  at (3,0.5):
 
 Forward Newton method:
-	Best guess:	(0,0)
-	Minima:	(NaN,NaN)
+	Best guess:	(3,0.444444444444445)
+	Minima:	(2.99999254473291,0.499998206041012)
 Central Newton method:
 	Best guess:	(3.421875,0.62002743484225)
 	Minima:	(2.99999996114674,0.499999989288039)
