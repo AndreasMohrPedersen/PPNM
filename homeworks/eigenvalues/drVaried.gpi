@@ -1,5 +1,5 @@
  \
-	set term svg;\
+	set term svg background "white";\
 	set out "dr.svg";\
 	set title "E_0 convergence with dr";\
 	set key bottom right;\

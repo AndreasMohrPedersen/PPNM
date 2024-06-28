@@ -8,7 +8,7 @@ all :  out.txt dr.svg rMax.svg wavefuncs.svg
 
 dr.svg : Makefile
 	echo ' \
-		set term svg;\
+		set term svg background "white";\
 		set out "$@";\
 		set title "E_0 convergence with dr";\
 		set key bottom right;\
@@ -19,7 +19,7 @@ dr.svg : Makefile
 
 rMax.svg : Makefile
 	echo ' \
-		set term svg;\
+		set term svg background "white";\
 		set out "$@";\
 		set title "E_0 convergence with rmax";\
 		set xlabel "rmax";\
@@ -29,7 +29,7 @@ rMax.svg : Makefile
 
 wavefuncs.svg : wavefuncs.txt Makefile
 	echo ' \
-		set term svg;\
+		set term svg background "white";\
 		set out "$@";\
 		set title "";\
 		set xlabel "r";\

@@ -1,5 +1,5 @@
  \
-	set term svg;\
+	set term svg background "white";\
 	set out "rMax.svg";\
 	set title "E_0 convergence with rmax";\
 	set xlabel "rmax";\

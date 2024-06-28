@@ -1,5 +1,5 @@
  \
-	set term svg;\
+	set term svg background "white";\
 	set out "wavefuncs.svg";\
 	set title "";\
 	set xlabel "r";\
